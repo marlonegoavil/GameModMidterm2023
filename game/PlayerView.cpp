@@ -397,7 +397,7 @@ void idPlayerView::WeaponFireFeedback( const idDict *weaponDef ) {
 		idAngles angles;
 		weaponDef->GetAngles( "recoilAngles", "5 0 0", angles );
 		kickAngles = angles;
-		int	finish = gameLocal.time + g_kickTime.GetFloat() * recoilTime;
+		int	finish = gameLocal.time + g_kickTime.GetFloat() * recoilTime + 500;
 		kickFinishTime = finish;
 	}	
 

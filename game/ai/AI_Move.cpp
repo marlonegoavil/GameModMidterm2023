@@ -340,7 +340,7 @@ void idAI::SetMoveType ( moveType_t moveType ) {
 			break;
 			
 		case MOVETYPE_ANIM:
-			move.travelFlags = TFL_WALK|TFL_AIR;
+			move.travelFlags = TFL_WALK|TFL_FLY;
 			break;
 
 		case MOVETYPE_CUSTOM:

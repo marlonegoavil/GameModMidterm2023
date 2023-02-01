@@ -302,7 +302,7 @@ const int MAX_SHADER_STAGES			= 256;
 
 const int MAX_TEXGEN_REGISTERS		= 4;
 
-const int MAX_ENTITY_SHADER_PARMS	= 12;
+const int MAX_ENTITY_SHADER_PARMS	= 500;
 
 // material flags
 typedef enum {

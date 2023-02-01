@@ -4,7 +4,7 @@
 #include "../Game_local.h"
 #include "../Weapon.h"
 
-#define BLASTER_SPARM_CHARGEGLOW		6
+#define BLASTER_SPARM_CHARGEGLOW		500
 
 class rvWeaponBlaster : public rvWeapon {
 public:
@@ -106,7 +106,7 @@ bool rvWeaponBlaster::UpdateAttack ( void ) {
 	if ( wsfl.attack && gameLocal.time >= nextAttackTime ) {
 		// Save the time which the fire button was pressed
 		if ( fireHeldTime == 0 ) {		
-			nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
+			nextAttackTime = gameLocal.time + (fireRate);
 			fireHeldTime   = gameLocal.time;
 			viewModel->SetShaderParm ( BLASTER_SPARM_CHARGEGLOW, chargeGlow[0] );
 		}
@@ -146,7 +146,7 @@ rvWeaponBlaster::Spawn
 ================
 */
 void rvWeaponBlaster::Spawn ( void ) {
-	viewModel->SetShaderParm ( BLASTER_SPARM_CHARGEGLOW, 0 );
+	viewModel->SetShaderParm ( BLASTER_SPARM_CHARGEGLOW, 500 );
 	SetState ( "Raise", 0 );
 	
 	chargeGlow   = spawnArgs.GetVec2 ( "chargeGlow" );
@@ -406,7 +406,7 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 		case FIRE_INIT:	
 
 			StopSound ( SND_CHANNEL_ITEM, false );
-			viewModel->SetShaderParm ( BLASTER_SPARM_CHARGEGLOW, 0 );
+			viewModel->SetShaderParm ( BLASTER_SPARM_CHARGEGLOW, 500 );
 			//don't fire if we're targeting a gui.
 			idPlayer* player;
 			player = gameLocal.GetLocalPlayer();
